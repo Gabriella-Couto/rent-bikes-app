@@ -4,6 +4,7 @@ import { Header } from 'react-native-elements';
 import {Pagar} from './Componentes/Pagamentos/Pagar';
 import {VerBicicleta} from './Componentes/VerBicicleta';
 import SideList from './Componentes/SideList';
+import TelaCliente from './Componentes/TelaInicio';
 
 export default function App() {
   return (
@@ -13,7 +14,7 @@ export default function App() {
         centerComponent={{ text: 'Aluga Aí', style: { color: '#fff' } }}
         rightComponent={<Image style={styles.imagem} source={require('./Imagens/logo.png')}/>}
       />
-        <VerBicicleta/>
+        <TelaCliente/>
     </View>
   );
 }
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   imagem: {
-    width: 40,
-    height: 40
+    width: 30,
+    height: 30
 }
 });
