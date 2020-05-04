@@ -1,53 +1,121 @@
 import React from 'react';
-import { StyleSheet, Button, Text, View, Image} from 'react-native';
-import {withNavigation} from 'react-navigation';
+import {
+  Button,
+  Text,
+  TextInput,
+  View,
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  KeyboardAvoidingView,
+  Image
+} from 'react-native';
+import { withNavigation } from 'react-navigation';
+import colors from "../colors";
+import Constants from "expo-constants";
 
-const TelaInicio = ({navigation}) => {
+const TelaInicio = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View>
-        <Image style={styles.imagem} source = {require('../Imagens/logo.png')} />
-      </View>
+      <View style={styles.center}>
+        <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
 
-      <View>
-          <Text style={styles.text}>Olá, Bem Vindxs!</Text>
-      </View>
-      <View style={styles.modal}>
-        <Button
-            title="Login"
-            onPress={() => {navigation.navigate('VerBicicleta');}}
-        />
-
-        <Button
-            title="Cadastrar"
-            onPress={() => {}}
-        />
+        <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
+        <View style={styles.hr}>
+          <TextInput
+            placeholder="email@aluga-ai.com"
+            placeholderTextColor="white"
+            style={[styles.textInput]}
+            selectionColor="white"
+            onChangeText={text => {
+              setEmail(text);
+            }}
+          />
         </View>
-  </View>
+
+        <View style={styles.hr}>
+          <TextInput
+            placeholder="Senha"
+            placeholderTextColor="white"
+            style={[styles.textInput]}
+            // secureTextEntry={true}
+            selectionColor="white"
+            onChangeText={text => {
+              setPassword(text);
+            }}
+          />
+        </View>
+
+        <TouchableOpacity
+          style={styles.btn}
+          mode="contained"
+          onPress={() => { navigation.navigate('VerBicicleta'); }}
+        >
+          <Text style={styles.btnText}>Sign in</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.btn}
+          mode="contained"
+          onPress={async () => {
+            navigation.navigate("SignUp");
+          }} //provisorio até termos o login
+        >
+          <Text style={styles.btnText}>Sign Up</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 100,
-  },
-  modal: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 50,
-  },
-  text: {
-    color: '#000000',
-    marginTop: 10,
-    fontSize: 25,
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: colors.venus800,
+    alignItems: "center",
+    flex: 1
   },
   imagem: {
     width: 200,
     height: 200,
-    marginBottom: 50,
+    marginBottom: 30
+  },
+
+  welcome: {
+    color: "white",
+    fontSize: 40,
+    marginTop: 30,
+    fontFamily: "Courier",
+    fontWeight: "bold"
+  },
+  center: {
+    alignItems: "center"
+  },
+  textInput: {
+    paddingHorizontal: 10,
+    color: "white",
+  },
+  hr: {
+    paddingBottom: 5,
+    borderBottomColor: "white",
+    borderBottomWidth: 1,
+    marginVertical: 15,
+    width: 300
+  },
+  btn: {
+    marginVertical: 30,
+    backgroundColor: 'white',
+    padding: 5,
+    color: colors.moon1000,
+    borderRadius: 30,
+    width: 125
+  },
+  btnText: {
+    fontSize: 20,
+    padding: 7,
+    color: colors.moon1000,
+    textAlign: "center",
+    fontWeight: 'bold',
+    alignSelf: "center"
   }
 });
 
