@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, Button, Text, View, Image} from 'react-native';
+import {withNavigation} from 'react-navigation';
 
-
-export default function TelaInicio() {
+const TelaInicio = ({navigation}) => {
   return (
     <View style={styles.container}>
       <View>
@@ -15,7 +15,7 @@ export default function TelaInicio() {
       <View style={styles.modal}>
         <Button
             title="Login"
-            onPress={() => {}}
+            onPress={() => {navigation.navigate('VerBicicleta');}}
         />
 
         <Button
@@ -50,3 +50,5 @@ const styles = StyleSheet.create({
     marginBottom: 50,
   }
 });
+
+export default withNavigation(TelaInicio)

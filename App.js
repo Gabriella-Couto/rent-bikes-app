@@ -4,18 +4,11 @@ import { Header } from 'react-native-elements';
 import {Pagar} from './Componentes/Pagamentos/Pagar';
 import {VerBicicleta} from './Componentes/VerBicicleta';
 import SideList from './Componentes/SideList';
-import TelaCliente from './Componentes/TelaInicio';
+import Index from './Navigation/Index';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Header
-        leftComponent={<SideList/>}
-        centerComponent={{ text: 'Aluga Aí', style: { color: '#fff' } }}
-        rightComponent={<Image style={styles.imagem} source={require('./Imagens/logo.png')}/>}
-      />
-        <TelaCliente/>
-    </View>
+    <Index/>
   );
 }
 

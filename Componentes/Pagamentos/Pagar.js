@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button, Modal } from 'react-native';
-
+import {withNavigation} from 'react-navigation';
 import { Divider, Overlay } from 'react-native-elements'
 
-export const Pagar = () => {
+const Pagar = ({navigation}) => {
 
     const [showModal, setShowModal] = useState(false);
 
@@ -29,7 +29,7 @@ export const Pagar = () => {
 
             </View>
             <View style={styles.marginBtn1}>
-                <Button title="Alterar" onPress={alterarClick}/>
+                <Button title="Alterar" onPress={() => {navigation.navigate('TelaInicio')}}/>
             </View>
             <Divider style={styles.dividerLine} />
             <View >
@@ -89,3 +89,6 @@ const styles = StyleSheet.create({
   }
 
 });
+
+
+export default withNavigation(Pagar)

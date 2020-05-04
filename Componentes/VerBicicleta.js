@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { StyleSheet, Text, View, Button, Image, ScrollView } from 'react-native';
+import {withNavigation} from 'react-navigation';
 
-export const VerBicicleta = () => {
+const VerBicicleta = ({ navigation }) => {
     const alugarClick = () => {
 
     }
@@ -21,7 +22,7 @@ export const VerBicicleta = () => {
                 <Text style={styles.lines}>Retirada em: Butantã, São Paulo - SP</Text>
                 </View>
                 <View style={styles.btn1}>
-                    <Button title="Alugar" onPress={alugarClick}/>
+                    <Button title="Alugar" onPress={() => {navigation.navigate('Pagamento')}}/>
                 </View>
             </View>
            
@@ -57,3 +58,5 @@ const styles = StyleSheet.create({
   }
 
 });
+
+export default withNavigation(VerBicicleta)
