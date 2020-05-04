@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import colors from "../colors";
+import MapView from 'react-native-maps';
 
 const VerBicicleta = ({ navigation }) => {
   const alugarClick = () => {
@@ -15,8 +16,9 @@ const VerBicicleta = ({ navigation }) => {
           <Text style={styles.name}>Bicicleta de passeio</Text>
           <Text style={styles.price}>R$ 5,00/h</Text>
           <Text style={styles.description}>
-            Esse conjunto de componentes é indicado para passeios em qualquer tipo de terreno com total conforto e segurança sem perder o estilo.
-            </Text>
+            Esse conjunto de componentes é indicado para passeios em qualquer
+            tipo de terreno com total conforto e segurança sem perder o estilo.
+          </Text>
         </View>
         <View style={styles.separator}></View>
         <TouchableOpacity
@@ -26,9 +28,26 @@ const VerBicicleta = ({ navigation }) => {
         >
           <Text style={styles.btnText}>Alugar</Text>
         </TouchableOpacity>
+        <MapView style={{ height: 300, width: "100%" }}
+          initialRegion={{
+            latitude: "-23.6214181",
+            longitude: "-46.6392422",
+            latitudeDelta: 0.035,
+            longitudeDelta: 0.035
+          }}
+        >
+          <MapView.Marker
+            coordinate={{
+              latitude: "-23.6214181",
+              longitude: "-46.6392422",
+            }}
+            pinColor={'#f44336'}
 
+          />
+        </MapView>
       </ScrollView>
-    </View>
+    </View >
+
   );
 }
 
@@ -39,7 +58,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#fff',
     margin: 15,
-    height: 200
+    height: 200,
+    borderRadius: 10
   },
   productImg: {
     width: 200,
