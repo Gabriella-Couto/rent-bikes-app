@@ -7,7 +7,7 @@ import {
   Platform,
   StyleSheet,
   TouchableOpacity,
-  KeyboardAvoidingView,
+  ScrollView,
   Image
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
@@ -16,54 +16,57 @@ import Constants from "expo-constants";
 
 const TelaInicio = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <View style={styles.center}>
-        <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
+    <ScrollView>
 
-        <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
-        <View style={styles.hr}>
-          <TextInput
-            placeholder="email@aluga-ai.com"
-            placeholderTextColor="white"
-            style={[styles.textInput]}
-            selectionColor="white"
-            onChangeText={text => {
-              setEmail(text);
-            }}
-          />
+      <View style={styles.container}>
+        <View style={styles.center}>
+          <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
+
+          <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
+          <View style={styles.hr}>
+            <TextInput
+              placeholder="email@aluga-ai.com"
+              placeholderTextColor="white"
+              style={[styles.textInput]}
+              selectionColor="white"
+              onChangeText={text => {
+                setEmail(text);
+              }}
+            />
+          </View>
+
+          <View style={styles.hr}>
+            <TextInput
+              placeholder="Senha"
+              placeholderTextColor="white"
+              style={[styles.textInput]}
+              // secureTextEntry={true}
+              selectionColor="white"
+              onChangeText={text => {
+                setPassword(text);
+              }}
+            />
+          </View>
+
+          <TouchableOpacity
+            style={styles.btn}
+            mode="contained"
+            onPress={() => { navigation.navigate('VerBicicleta'); }}
+          >
+            <Text style={styles.btnText}>Sign in</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.btn}
+            mode="contained"
+            onPress={async () => {
+              navigation.navigate("SignUp");
+            }} //provisorio até termos o login
+          >
+            <Text style={styles.btnText}>Sign Up</Text>
+          </TouchableOpacity>
         </View>
-
-        <View style={styles.hr}>
-          <TextInput
-            placeholder="Senha"
-            placeholderTextColor="white"
-            style={[styles.textInput]}
-            // secureTextEntry={true}
-            selectionColor="white"
-            onChangeText={text => {
-              setPassword(text);
-            }}
-          />
-        </View>
-
-        <TouchableOpacity
-          style={styles.btn}
-          mode="contained"
-          onPress={() => { navigation.navigate('VerBicicleta'); }}
-        >
-          <Text style={styles.btnText}>Sign in</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.btn}
-          mode="contained"
-          onPress={async () => {
-            navigation.navigate("SignUp");
-          }} //provisorio até termos o login
-        >
-          <Text style={styles.btnText}>Sign Up</Text>
-        </TouchableOpacity>
       </View>
-    </View>
+    </ScrollView>
   );
 }
 
@@ -84,7 +87,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 40,
     marginTop: 30,
-    fontFamily: "Courier",
+    fontFamily: "Courier", 
     fontWeight: "bold"
   },
   center: {
