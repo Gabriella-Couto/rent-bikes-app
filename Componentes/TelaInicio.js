@@ -17,7 +17,6 @@ import Constants from "expo-constants";
 const TelaInicio = ({ navigation }) => {
   return (
     <ScrollView>
-
       <View style={styles.container}>
         <View style={styles.center}>
           <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
@@ -51,7 +50,7 @@ const TelaInicio = ({ navigation }) => {
           <TouchableOpacity
             style={styles.btn}
             mode="contained"
-            onPress={() => { navigation.navigate('VerBicicleta'); }}
+            onPress={() => { navigation.navigate('Pagamento'); }}
           >
             <Text style={styles.btnText}>Sign in</Text>
           </TouchableOpacity>
