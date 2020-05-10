@@ -29,7 +29,7 @@ const Pagar = ({navigation}) => {
 
             </View>
             <View style={styles.marginBtn1}>
-                <Button title="Alterar" onPress={() => {navigation.navigate('TelaInicio')}}/>
+                <Button title="Alterar" onPress={() => {navigation.navigate('AlterarPagamento')}}/>
             </View>
             <Divider style={styles.dividerLine} />
             <View >
