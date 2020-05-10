@@ -50,7 +50,7 @@ const TelaInicio = ({ navigation }) => {
           <TouchableOpacity
             style={styles.btn}
             mode="contained"
-            onPress={() => { navigation.navigate('Pagamento'); }}
+            onPress={() => { navigation.navigate('VerBicicleta'); }}
           >
             <Text style={styles.btnText}>Sign in</Text>
           </TouchableOpacity>
