@@ -1,58 +1,56 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, Button, Modal } from 'react-native';
-import {withNavigation} from 'react-navigation';
+import { withNavigation } from 'react-navigation';
 import { Divider, Overlay } from 'react-native-elements'
 
-const Pagar = ({navigation}) => {
+const Pagar = ({ navigation }) => {
 
-    const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const alterarClick = () => {
+  }
 
-    const alterarClick = () => {
+  const pagarClick = () => {
+    setShowModal(true);
+  }
 
-    }
+  const toggleOverlay = () => {
+    setShowModal(false);
+  };
 
-    const pagarClick = () => {
-        setShowModal(true);
-    }
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Pagamento</Text>
+      <View >
+        <Text style={styles.lines}>Confirmar dados de pagamento:</Text>
+        <Text style={styles.subContent}>Data validade: 03/22</Text>
+        <Text style={styles.subContent}>Cartão: *********889</Text>
 
-    const toggleOverlay = () => {
-        setShowModal(false);
-    };
+      </View>
+      <View style={styles.marginBtn1}>
+        <Button title="Alterar" onPress={() => { navigation.navigate('AlterarPagamento') }} />
+      </View>
+      <Divider style={styles.dividerLine} />
+      <View >
+        <Text style={styles.lines}>Valor do aluguel: R$ 45,00</Text>
+        <Text style={styles.lines}>Bicicleta: Bicicleta Mountain Bike Colli Bikes GPS 220</Text>
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>Pagamento</Text>
-            <View >
-                <Text style={styles.lines}>Confirmar dados de pagamento:</Text>
-                <Text style={styles.subContent}>Data validade: 03/22</Text>
-                <Text style={styles.subContent}>Cartão: *********889</Text>
+      </View>
+      <View style={styles.marginBtn2}>
 
-            </View>
-            <View style={styles.marginBtn1}>
-                <Button title="Alterar" onPress={() => {navigation.navigate('AlterarPagamento')}}/>
-            </View>
-            <Divider style={styles.dividerLine} />
-            <View >
-                <Text style={styles.lines}>Valor do aluguel: R$ 45,00</Text>
-                <Text style={styles.lines}>Bicicleta: Bicicleta Mountain Bike Colli Bikes GPS 220</Text>
-
-            </View>
-            <View style={styles.marginBtn2}>
-
-                <Button title="Pagar" onPress={pagarClick} />
-            </View>
-            <Overlay isVisible={showModal} onBackdropPress={toggleOverlay} fullScreen={false}>
-                <Text style={styles.messageSuccess}>Pagamento realizado com sucesso!!!</Text>
-            </Overlay>
-        </View>
-    );
+        <Button title="Pagar" onPress={pagarClick} />
+      </View>
+      <Overlay isVisible={showModal} onBackdropPress={toggleOverlay} fullScreen={false}>
+        <Text style={styles.messageSuccess}>Pagamento realizado com sucesso!!!</Text>
+      </Overlay>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-   
+
   },
   title: {
     fontSize: 20,
@@ -60,9 +58,9 @@ const styles = StyleSheet.create({
     marginBottom: 15
   },
   marginBtn1: {
-      marginBottom: 130,
-      marginTop: 10,
-      width: 100
+    marginBottom: 130,
+    marginTop: 10,
+    width: 100
   },
   marginBtn2: {
     marginTop: 20,
@@ -70,17 +68,17 @@ const styles = StyleSheet.create({
     display: 'flex',
     justifyContent: 'flex-end',
   },
-  subContent:{
-      marginBottom: 3,
-      marginLeft: 40
+  subContent: {
+    marginBottom: 3,
+    marginLeft: 40
   },
-  lines:{
+  lines: {
     marginBottom: 3,
     marginLeft: 20
   },
   dividerLine: {
-      backgroundColor: '#000',
-      margin: 15
+    backgroundColor: '#000',
+    margin: 15
   },
   messageSuccess: {
     fontSize: 20,
@@ -89,6 +87,5 @@ const styles = StyleSheet.create({
   }
 
 });
-
 
 export default withNavigation(Pagar)

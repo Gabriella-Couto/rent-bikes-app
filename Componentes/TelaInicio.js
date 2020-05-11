@@ -16,56 +16,52 @@ import Constants from "expo-constants";
 
 const TelaInicio = ({ navigation }) => {
   return (
-    <ScrollView>
-      <View style={styles.container}>
-        <View style={styles.center}>
-          <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
 
-          <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
-          <View style={styles.hr}>
-            <TextInput
-              placeholder="email@aluga-ai.com"
-              placeholderTextColor="white"
-              style={[styles.textInput]}
-              selectionColor="white"
-              onChangeText={text => {
-                setEmail(text);
-              }}
-            />
-          </View>
-
-          <View style={styles.hr}>
-            <TextInput
-              placeholder="Senha"
-              placeholderTextColor="white"
-              style={[styles.textInput]}
-              // secureTextEntry={true}
-              selectionColor="white"
-              onChangeText={text => {
-                setPassword(text);
-              }}
-            />
-          </View>
-
-          <TouchableOpacity
-            style={styles.btn}
-            mode="contained"
-            onPress={() => { navigation.navigate('VerBicicleta'); }}
-          >
-            <Text style={styles.btnText}>Sign in</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.btn}
-            mode="contained"
-            onPress={async () => {
-              navigation.navigate("SignUp");
-            }} //provisorio até termos o login
-          >
-            <Text style={styles.btnText}>Sign Up</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.container}>
+      <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
+      <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
+      <View style={styles.hr}>
+        <TextInput
+          placeholder="email@aluga-ai.com"
+          placeholderTextColor="white"
+          style={[styles.textInput]}
+          selectionColor="white"
+          onChangeText={text => {
+            setEmail(text);
+          }}
+        />
       </View>
-    </ScrollView>
+
+      <View style={styles.hr}>
+        <TextInput
+          placeholder="Senha"
+          placeholderTextColor="white"
+          style={[styles.textInput]}
+          // secureTextEntry={true}
+          selectionColor="white"
+          onChangeText={text => {
+            setPassword(text);
+          }}
+        />
+      </View>
+
+      <TouchableOpacity
+        style={styles.btn}
+        mode="contained"
+        onPress={() => { navigation.navigate('VerBicicleta'); }}
+      >
+        <Text style={styles.btnText}>Sign in</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.btn}
+        mode="contained"
+        onPress={async () => {
+          navigation.navigate("SignUp");
+        }} //provisorio até termos o login
+      >
+        <Text style={styles.btnText}>Sign Up</Text>
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -74,23 +70,20 @@ const styles = StyleSheet.create({
     paddingTop: Constants.statusBarHeight,
     backgroundColor: colors.venus800,
     alignItems: "center",
-    flex: 1
+    flex: 1,
+    alignItems: "center"
   },
   imagem: {
     width: 200,
     height: 200,
     marginBottom: 30
   },
-
   welcome: {
     color: "white",
     fontSize: 40,
     marginTop: 30,
-    fontFamily: "Courier", 
+    fontFamily: "Courier",
     fontWeight: "bold"
-  },
-  center: {
-    alignItems: "center"
   },
   textInput: {
     paddingHorizontal: 10,
@@ -104,7 +97,7 @@ const styles = StyleSheet.create({
     width: 300
   },
   btn: {
-    marginVertical: 30,
+    marginVertical: 20,
     backgroundColor: 'white',
     padding: 5,
     color: colors.moon1000,
