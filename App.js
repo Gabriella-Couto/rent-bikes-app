@@ -1,16 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image } from 'react-native';
-import { Header } from 'react-native-elements';
-import {Pagar} from './Componentes/Pagamentos/Pagar';
-import {VerBicicleta} from './Componentes/VerBicicleta';
-import SideList from './Componentes/SideList';
 import Index from './Navigation/Index';
 
 export default function App() {
   return (
-    <Index/>
+      <Index/>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {

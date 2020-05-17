@@ -46,7 +46,7 @@ const VerBicicleta = ({ navigation }) => {
           />
         </MapView>
       </ScrollView>
-    </View >
+    </View>
 
   );
 }
