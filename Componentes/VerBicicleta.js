@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { StyleSheet, Text, View, Button, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import colors from "../colors";
 import MapView from 'react-native-maps';
 
-const VerBicicleta = ({ navigation }) => {
+const VerBicicleta = ({ route, navigation }) => {
+  const [bikeId, setBikeId] = useState(0);
+
   const alugarClick = () => {
   }
+
+  const { params } = navigation.state;
+  const itemId = params ? params.itemId : null;
+  
+  console.log("item", params.itemId);
+  setBikeId(JSON.stringify(itemId))
+  console.log("##", bikeId)
+
 
   return (
     <View style={styles.container}>

@@ -4,10 +4,13 @@ import api from '../services/Api';
 import { useNavigation } from 'react-navigation';
 import Constants from "expo-constants";
 import colors from "../colors";
+import { withNavigation } from 'react-navigation';
+import { StackActions, NavigationActions } from 'react-navigation';
+import { AsyncStorage } from 'react-native';
+import 'intl';
+import 'intl/locale-data/jsonp/pt-BR';
 
-
-
-export default function Lista() {
+function Lista({navigation}) {
   const [bicycles, setBicycles] = useState([])
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(1)
@@ -54,13 +57,13 @@ export default function Lista() {
             <Text style={styles.price}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigateToDetail(bicycle.id)}>
+              onPress={() => navigation.navigate('VerBicicleta', { itemId: bicycle.id })}>
               <Text style={styles.btnText}>Ver mais detalhes</Text>
             </TouchableOpacity>
           </View>
         )}
       />
-    </View >
+    </View>
   )
 }
 
@@ -127,3 +130,5 @@ const styles = StyleSheet.create({
     marginTop: 10
   }
 });
+
+export default withNavigation(Lista)

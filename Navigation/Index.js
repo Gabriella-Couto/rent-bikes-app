@@ -12,8 +12,6 @@ import AlterarPagamento from '../Componentes/Pagamentos/AlterarPagamento';
 import CadastrarBike from '../Componentes/CadastarBike';
 import Lista from '../Componentes/Lista';
 
-
-
 const Index = createStackNavigator({
     TelaInicio: TelaInicio,
     VerBicicleta: VerBicicleta,
