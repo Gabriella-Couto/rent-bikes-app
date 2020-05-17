@@ -10,6 +10,9 @@ import RegistroCliente from '../Componentes/RegistroCliente';
 import RegistroAnunciante from '../Componentes/RegistroAnunciante';
 import AlterarPagamento from '../Componentes/Pagamentos/AlterarPagamento';
 import CadastrarBike from '../Componentes/CadastarBike';
+import Lista from '../Componentes/Lista';
+
+
 
 const Index = createStackNavigator({
     TelaInicio: TelaInicio,
@@ -19,7 +22,9 @@ const Index = createStackNavigator({
     AlterarPagamento: AlterarPagamento,
     RegistroAnunciante: RegistroAnunciante,
     RegistroCliente: RegistroCliente,
-    CadastrarBike: CadastrarBike
+    CadastrarBike: CadastrarBike,
+    Lista: Lista,
+    AlterarPagamento: AlterarPagamento
 }, {
         defaultNavigationOptions: {
             headerTintColor: Platform.OS === 'android' ? '#842a6c' : '#842a6c'

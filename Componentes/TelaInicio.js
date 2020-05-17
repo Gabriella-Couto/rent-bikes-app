@@ -8,6 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Input,
   Image
 } from 'react-native';
 import { withNavigation } from 'react-navigation';
@@ -17,7 +18,6 @@ import Constants from "expo-constants";
 const TelaInicio = ({ navigation }) => {
   return (
     <ScrollView>
-
       <View style={styles.container}>
         <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
         <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
