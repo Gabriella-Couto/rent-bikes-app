@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   Button,
   Text,
@@ -13,8 +13,71 @@ import {
 import { withNavigation } from 'react-navigation';
 import colors from "../colors";
 import Constants from "expo-constants";
+import api from '../api';
+import { StatusBar, AsyncStorage } from 'react-native';
+import { StackActions, NavigationActions } from 'react-navigation';
+import axios from 'axios';
 
 const TelaInicio = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
+  const signIn = async () => {
+
+    try {
+      // await api.get('/users').then(response => {
+      //   let lista_users = response.data;
+      //   console.log("lista", lista_users)
+      
+      //     lista_users.map((u) => {
+      //       if(u.email.toLowerCase() == email.toLowerCase() && u.password == senha){
+      //           AsyncStorage.setItem('UsuarioLogado', u);
+      //           const resetAction = StackActions.reset({
+      //             index: 0,
+      //             actions: [
+      //               NavigationActions.navigate({ routeName: 'VerBicicleta' }),
+      //             ],
+      //           });
+      //           navigation.dispatch(resetAction);
+      //       } else if(u.email == email && u.password != senha){
+
+      //       }
+      //     })
+      //   });
+
+        await api.get('/advertisers').then(response => {
+          let lista_advertisers = response.data;
+         // console.log("lista", lista_advertisers)
+
+          lista_advertisers.map((u) => {
+              if(u.email.toLowerCase() == email.toLowerCase() && u.password == senha){
+                  let usuario = JSON.stringify(u);
+                  console.log("user", usuario)
+
+                  AsyncStorage.setItem('UsuarioLogado', usuario), () => {
+                    AsyncStorage.getItem("UsuarioLogado", (err, result) => {
+                      console.log("@@", result);
+                    });
+                  };
+
+                  const resetAction = StackActions.reset({
+                    index: 0,
+                    actions: [
+                      NavigationActions.navigate({ routeName: 'CadastrarBike' }),
+                    ],
+                  });
+                  navigation.dispatch(resetAction);
+              } else if(u.email == email && u.password != senha){
+
+              }
+            })
+        });
+        
+      } catch (_err) {
+        console.log("Erro dispatch", _err); 
+      }
+  }
+
   return (
     <ScrollView>
 
@@ -41,7 +104,7 @@ const TelaInicio = ({ navigation }) => {
             // secureTextEntry={true}
             selectionColor="white"
             onChangeText={text => {
-              setPassword(text);
+              setSenha(text);
             }}
           />
         </View>
@@ -49,7 +112,7 @@ const TelaInicio = ({ navigation }) => {
         <TouchableOpacity
           style={styles.btn}
           mode="contained"
-          onPress={() => { navigation.navigate('VerBicicleta'); }}
+          onPress={() => {navigation.navigate('Pagamento')}}
         >
           <Text style={styles.btnText}>Sign in</Text>
         </TouchableOpacity>

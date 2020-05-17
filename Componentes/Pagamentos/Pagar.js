@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button, Modal } from 'react-native';
+import { StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import { Divider, Overlay } from 'react-native-elements'
+import colors from '../../colors';
 
 const Pagar = ({ navigation }) => {
 
@@ -19,28 +20,35 @@ const Pagar = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Pagamento</Text>
-      <View >
-        <Text style={styles.lines}>Confirmar dados de pagamento:</Text>
-        <Text style={styles.subContent}>Data validade: 03/22</Text>
-        <Text style={styles.subContent}>Cartão: *********889</Text>
-
+      <Text style={styles.title}>Resumo do aluguel</Text>
+      <View style={styles.alignCenter}>
+        <Text >Confirmar dados de pagamento:</Text>
+        <Text >Data validade: 03/22</Text>
+        <Text >Cartão: *********889</Text>
       </View>
-      <View style={styles.marginBtn1}>
-        <Button title="Alterar" onPress={() => { navigation.navigate('AlterarPagamento') }} />
+      <TouchableOpacity
+          style={styles.btn}
+          mode="contained"
+          onPress={() => {navigation.navigate('AlterarPagamento')}}
+          >
+          <Text style={styles.btnText}>Alterar cartão</Text>
+      </TouchableOpacity>
+      <View style={styles.dividerLine} ></View>
+      <View style={styles.alignCenter}>
+        <Text>Valor do aluguel: R$ 45,00</Text>
+        <Text>Bicicleta: Bicicleta Mountain Bike Colli Bikes GPS 220</Text>
       </View>
-      <Divider style={styles.dividerLine} />
-      <View >
-        <Text style={styles.lines}>Valor do aluguel: R$ 45,00</Text>
-        <Text style={styles.lines}>Bicicleta: Bicicleta Mountain Bike Colli Bikes GPS 220</Text>
-
-      </View>
-      <View style={styles.marginBtn2}>
-
-        <Button title="Pagar" onPress={pagarClick} />
-      </View>
+      <TouchableOpacity
+          style={styles.btn}
+          mode="contained"
+          onPress={() => {pagarClick()}}
+          >
+          <Text style={styles.btnText}>Pagar</Text>
+      </TouchableOpacity>
       <Overlay isVisible={showModal} onBackdropPress={toggleOverlay} fullScreen={false}>
-        <Text style={styles.messageSuccess}>Pagamento realizado com sucesso!!!</Text>
+        <Text style={styles.messageSuccess}>Pagamento realizado com sucesso!</Text>
+        <View style={styles.dividerLine} ></View>
+        <Text>Agora contate o vendedor no número 11 97778-0988 para combinar o local para pegar a sua bicicleta.</Text>
       </Overlay>
     </View>
   );
@@ -49,41 +57,65 @@ const Pagar = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginTop: 20,
+    alignItems: 'center',
     backgroundColor: '#fff',
-
+    margin: 15,
+    height: 200,
+    borderRadius: 10
   },
   title: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 15
+    marginBottom: 15,
+    paddingTop: 15
   },
-  marginBtn1: {
-    marginBottom: 130,
-    marginTop: 10,
-    width: 100
-  },
-  marginBtn2: {
-    marginTop: 20,
-    width: 100,
-    display: 'flex',
-    justifyContent: 'flex-end',
-  },
-  subContent: {
+  cardItens: {
     marginBottom: 3,
-    marginLeft: 40
+    marginLeft: 40,
+    fontSize: 16
   },
   lines: {
     marginBottom: 3,
-    marginLeft: 20
+    marginLeft: 35,
+    fontSize: 16
   },
   dividerLine: {
-    backgroundColor: '#000',
-    margin: 15
+    paddingBottom: 2,
+    backgroundColor: colors.venus400,
+    marginVertical: 15,
+    width: 330,
+    marginTop: 130
   },
   messageSuccess: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#32a852'
+    color: 'gray'
+  },
+  btn: {
+    marginVertical: 30,
+    backgroundColor: colors.venus400,
+    padding: 5,
+    borderRadius: 30,
+    width: 150,
+    alignContent: 'center',
+    alignSelf: "center"
+  },
+  btnText: {
+    fontSize: 18,
+    padding: 7,
+    color: '#fff',
+    textAlign: "center",
+    fontWeight: 'bold',
+    alignSelf: "center",
+    backgroundColor: colors.venus400,
+  }, 
+  alignCenter: {
+    flex: 1,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    marginBottom: 3,
+    fontSize: 18
   }
 
 });

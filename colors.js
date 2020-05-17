@@ -6,7 +6,6 @@ const colors = {
   moon1000: "#32383c",
   venus400: "#E078CE",
   venus800: "#842a6c",
-  uranus100: "#a6f7fe",
-  purple: "#842a6c"
+  uranus100: "#a6f7fe"
 };
 export default colors;
