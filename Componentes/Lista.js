@@ -38,7 +38,7 @@ export default function Lista() {
 
   return (
 
-    < View style={styles.container} >
+    <View style={styles.container}>
       <Text style={styles.btnText}>Escolha uma bicicleta</Text>
 
       <FlatList
@@ -54,7 +54,7 @@ export default function Lista() {
             <Text style={styles.price}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
             <TouchableOpacity
               style={styles.btn}
-              onPress={() => navigateToDetail(bicycle)}>
+              onPress={() => navigateToDetail(bicycle.id)}>
               <Text style={styles.btnText}>Ver mais detalhes</Text>
             </TouchableOpacity>
           </View>

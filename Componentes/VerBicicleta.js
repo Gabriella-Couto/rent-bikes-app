@@ -12,13 +12,10 @@ const VerBicicleta = ({ navigation }) => {
     <View style={styles.container}>
       <ScrollView>
         <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
-          <Image style={styles.productImg} source={require('../Imagens/1.jpg')} />
-          <Text style={styles.name}>Bicicleta de passeio</Text>
-          <Text style={styles.price}>R$ 5,00/h</Text>
-          <Text style={styles.description}>
-            Esse conjunto de componentes é indicado para passeios em qualquer
-            tipo de terreno com total conforto e segurança sem perder o estilo.
-          </Text>
+          <Image style={styles.productImg} source={{ uri: bicycle.image_url }} />
+          <Text style={styles.title} >{bicycle.title}</Text>
+          <Text style={styles.price}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
+          <Text style={styles.description} >{bicycle.description}</Text>
         </View>
         <View style={styles.separator}></View>
         <TouchableOpacity
@@ -65,7 +62,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
   },
-  name: {
+  title: {
     fontSize: 28,
     color: "#696969",
     fontWeight: 'bold'
