@@ -5,17 +5,14 @@ import colors from "../colors";
 import MapView from 'react-native-maps';
 
 const VerBicicleta = ({ route, navigation }) => {
-  const [bikeId, setBikeId] = useState(0);
 
   const alugarClick = () => {
   }
 
   const { params } = navigation.state;
-  const itemId = params ? params.itemId : null;
+  const itemId = params ? JSON.stringify(params.itemId) : null;
   
-  console.log("item", params.itemId);
-  setBikeId(JSON.stringify(itemId))
-  console.log("##", bikeId)
+  console.log("item", itemId);
 
 
   return (
