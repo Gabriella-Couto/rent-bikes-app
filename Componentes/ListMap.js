@@ -39,9 +39,9 @@ function ListMap({ navigation }) {
   return (
 
     <View style={styles.container}>
-      <Text style={styles.btnText}>Escolha uma bicicleta</Text>
+      <Text style={styles.title}>Escolha uma bicicleta</Text>
 
-      {!loading && <MapView style={{ height: 500, width: "100%" }}
+      {!loading && <MapView style={{ height: 800, width: "100%", borderRadius: 30 }}
         initialRegion={{
           latitude: -46.656057,
           longitude: -23.587075,
@@ -78,60 +78,15 @@ const styles = StyleSheet.create({
     flex: 1
   },
 
-  imagem: {
-    width: 200,
-    height: 200,
-    margin: 20,
-    alignItems: "center",
-    borderRadius: 20
-  },
-
-  btn: {
-    marginVertical: 30,
-    backgroundColor: colors.venus400,
-    padding: 5,
-    color: colors.moon1000,
-    borderRadius: 30,
-    width: 200,
-    alignSelf: 'center',
-
-  },
-
-  btnText: {
-    fontSize: 20,
-    padding: 7,
-    color: "white",
-    textAlign: "center",
-    fontWeight: 'bold',
-    alignSelf: "center"
-  },
-
-  card: {
-    alignItems: "center",
-    borderRadius: 20,
-    backgroundColor: '#fff',
-    padding: 15,
-    width: 300,
-    height: 450,
-    margin: 30
-  },
   title: {
     fontSize: 20,
     textAlign: "center",
     fontWeight: '600',
-    alignSelf: "center"
+    alignSelf: "center",
+    color: "white",
+    margin: 20
   },
-  description: {
-    fontSize: 14,
-    textAlign: "center",
-    alignSelf: "center"
-  },
-  price: {
-    fontSize: 16,
-    color: 'green',
-    fontWeight: '500',
-    marginTop: 10
-  }
+
 });
 
 export default withNavigation(ListMap)

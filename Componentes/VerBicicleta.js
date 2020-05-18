@@ -25,11 +25,11 @@ const VerBicicleta = ({ route, navigation }) => {
         <TouchableOpacity
           style={styles.btn}
           mode="contained"
-          onPress={() => { navigation.navigate('Pagamento') }}
+          onPress={() => { navigation.navigate('Pagamento', { bicycle }) }}
         >
           <Text style={styles.btnText}>Alugar</Text>
         </TouchableOpacity>
-        <MapView style={{ height: 500, width: "100%" }}
+        <MapView style={{ height: 300, width: "100%" }}
           initialRegion={{
             latitude: bicycle.latitude,
             longitude: bicycle.longitude
@@ -58,31 +58,33 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     margin: 15,
     height: 200,
-    borderRadius: 10
+    borderRadius: 10,
   },
   productImg: {
-    width: 200,
-    height: 200,
+    width: 250,
+    height: 250,
+    margin: 20,
+    alignItems: "center",
+    borderRadius: 20
   },
   title: {
     fontSize: 28,
     color: "#696969",
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: "center",
   },
   price: {
     marginTop: 10,
     fontSize: 18,
     color: "green",
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    textAlign: "center",
+
   },
   description: {
     textAlign: 'center',
     marginTop: 10,
     color: "#696969",
-  },
-  star: {
-    width: 40,
-    height: 40,
   },
 
   separator: {

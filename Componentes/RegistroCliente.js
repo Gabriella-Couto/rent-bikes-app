@@ -49,7 +49,7 @@ const RegistroCliente = ({ navigation }) => {
       const resetAction = StackActions.reset({
         index: 0,
         actions: [
-          NavigationActions.navigate({ routeName: 'Lista' }),
+          NavigationActions.navigate({ routeName: 'ListMap' }),
         ],
       });
       navigation.dispatch(resetAction);
