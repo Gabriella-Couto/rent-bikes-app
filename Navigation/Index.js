@@ -10,7 +10,7 @@ import RegistroCliente from '../Componentes/RegistroCliente';
 import RegistroAnunciante from '../Componentes/RegistroAnunciante';
 import AlterarPagamento from '../Componentes/Pagamentos/AlterarPagamento';
 import CadastrarBike from '../Componentes/CadastarBike';
-import Lista from '../Componentes/Lista';
+import ListMap from '../Componentes/ListMap';
 
 const Index = createStackNavigator({
     TelaInicio: TelaInicio,
@@ -21,7 +21,7 @@ const Index = createStackNavigator({
     RegistroAnunciante: RegistroAnunciante,
     RegistroCliente: RegistroCliente,
     CadastrarBike: CadastrarBike,
-    Lista: Lista,
+    ListMap: ListMap,
     AlterarPagamento: AlterarPagamento
 }, {
         defaultNavigationOptions: {

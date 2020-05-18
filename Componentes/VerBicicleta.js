@@ -1,29 +1,26 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, Button, Image, ScrollView, TouchableOpacity } from 'react-native';
 import { withNavigation } from 'react-navigation';
 import colors from "../colors";
 import MapView from 'react-native-maps';
 
 const VerBicicleta = ({ route, navigation }) => {
-
   const alugarClick = () => {
   }
 
   const { params } = navigation.state;
-  const itemId = params ? JSON.stringify(params.itemId) : null;
-  
-  console.log("item", itemId);
-
+  const bicycle = params.bicycle;
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View style={{ alignItems: 'center', marginHorizontal: 30 }}>
+        <View>
           <Image style={styles.productImg} source={{ uri: bicycle.image_url }} />
           <Text style={styles.title} >{bicycle.title}</Text>
           <Text style={styles.price}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
           <Text style={styles.description} >{bicycle.description}</Text>
         </View>
+
         <View style={styles.separator}></View>
         <TouchableOpacity
           style={styles.btn}
@@ -32,23 +29,21 @@ const VerBicicleta = ({ route, navigation }) => {
         >
           <Text style={styles.btnText}>Alugar</Text>
         </TouchableOpacity>
-        <MapView style={{ height: 300, width: "100%" }}
+        <MapView style={{ height: 500, width: "100%" }}
           initialRegion={{
-            latitude: "-23.6214181",
-            longitude: "-46.6392422",
-            latitudeDelta: 0.035,
-            longitudeDelta: 0.035
+            latitude: bicycle.latitude,
+            longitude: bicycle.longitude
           }}
         >
           <MapView.Marker
+            key={bicycle.id}
             coordinate={{
-              latitude: "-23.6214181",
-              longitude: "-46.6392422",
+              latitude: bicycle.latitude,
+              longitude: bicycle.longitude
             }}
-            pinColor={'#f44336'}
-
           />
         </MapView>
+
       </ScrollView>
     </View>
 

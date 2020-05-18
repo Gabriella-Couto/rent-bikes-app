@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, Text, View, Image, TouchableOpacity, FlatList } from "react-native";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import api from '../services/Api';
-import { useNavigation } from 'react-navigation';
 import Constants from "expo-constants";
 import colors from "../colors";
 import { withNavigation } from 'react-navigation';
-import { StackActions, NavigationActions } from 'react-navigation';
-import { AsyncStorage } from 'react-native';
+import MapView from 'react-native-maps';
 
-function Lista({ navigation }) {
+
+function ListMap({ navigation }) {
   const [bicycles, setBicycles] = useState([])
   const [total, setTotal] = useState(0)
   const [page, setPage] = useState(1)
@@ -30,38 +29,44 @@ function Lista({ navigation }) {
     setTotal(response.headers['x-total-count'])
     setPage(page)
     setLoading(false)
-
   }
 
   useEffect(() => {
     loadBicycles()
   }, [])
 
+
   return (
 
     <View style={styles.container}>
       <Text style={styles.btnText}>Escolha uma bicicleta</Text>
 
-      <FlatList
-        data={bicycles}
-        keyExtractor={bicycle => String(bicycle.id)}
-        showsVerticalScrollIndicator={false}
-        onEndReachedThreshold={0.2}
-        renderItem={({ item: bicycle }) => (
-          <View style={styles.card} >
-            <Image style={styles.imagem} source={{ uri: bicycle.image_url }} />
-            <Text style={styles.title} >{bicycle.title}</Text>
-            <Text style={styles.description} >{bicycle.description}</Text>
-            <Text style={styles.price}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
-            <TouchableOpacity
-              style={styles.btn}
-              onPress={() => navigation.navigate('VerBicicleta', { bicycle })}>
-              <Text style={styles.btnText}>Ver mais detalhes</Text>
-            </TouchableOpacity>
-          </View>
-        )}
-      />
-    </View>
+      {!loading && <MapView style={{ height: 500, width: "100%" }}
+        initialRegion={{
+          latitude: -46.656057,
+          longitude: -23.587075,
+          latitudeDelta: 0.035,
+          longitudeDelta: 0.035
+        }}
+      >
+        {bicycles.map(bicycle => {
+          return (
+            <MapView.Marker
+              key={bicycle.id}
+              coordinate={{
+                latitude: parseFloat(bicycle.latitude),
+                longitude: parseFloat(bicycle.longitude)
+              }}
+              title={bicycle.title}
+              description={bicycle.description}
+              onPress={() => navigation.navigate('VerBicicleta', { bicycle })}
+              pinColor={'#f44336'}
+            />
+          );
+        })}
+      </MapView>
+      }
+    </View >
   )
 }
 
@@ -129,4 +134,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(Lista)
+export default withNavigation(ListMap)
