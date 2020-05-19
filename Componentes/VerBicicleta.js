@@ -32,7 +32,9 @@ const VerBicicleta = ({ route, navigation }) => {
         <MapView style={{ height: 300, width: "100%" }}
           initialRegion={{
             latitude: bicycle.latitude,
-            longitude: bicycle.longitude
+            longitude: bicycle.longitude,
+            latitudeDelta: 0.0083,
+            longitudeDelta: 0.0084
           }}
         >
           <MapView.Marker
@@ -61,8 +63,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   productImg: {
-    width: 250,
-    height: 250,
+    width: 230,
+    height: 230,
     margin: 20,
     alignItems: "center",
     borderRadius: 20

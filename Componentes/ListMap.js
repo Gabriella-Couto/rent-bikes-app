@@ -35,7 +35,6 @@ function ListMap({ navigation }) {
     loadBicycles()
   }, [])
 
-
   return (
 
     <View style={styles.container}>
@@ -43,10 +42,10 @@ function ListMap({ navigation }) {
 
       {!loading && <MapView style={{ height: 800, width: "100%", borderRadius: 30 }}
         initialRegion={{
-          latitude: -46.656057,
-          longitude: -23.587075,
-          latitudeDelta: 0.035,
-          longitudeDelta: 0.035
+          latitude: -23.6185685,
+          longitude: -46.6394187,
+          latitudeDelta: 0.0123,
+          longitudeDelta: 0.0124
         }}
       >
         {bicycles.map(bicycle => {
