@@ -5,11 +5,9 @@ import colors from "../colors";
 import MapView from 'react-native-maps';
 
 const VerBicicleta = ({ route, navigation }) => {
-  const alugarClick = () => {
-  }
-
   const { params } = navigation.state;
   const bicycle = params.bicycle;
+  const anunciante = params.anunciante;
 
   return (
     <View style={styles.container}>
@@ -22,13 +20,17 @@ const VerBicicleta = ({ route, navigation }) => {
         </View>
 
         <View style={styles.separator}></View>
-        <TouchableOpacity
-          style={styles.btn}
-          mode="contained"
-          onPress={() => { navigation.navigate('Pagamento', { bicycle }) }}
-        >
-          <Text style={styles.btnText}>Alugar</Text>
-        </TouchableOpacity>
+        {anunciante != null ? 
+          null 
+          : 
+          <TouchableOpacity
+            style={styles.btn}
+            mode="contained"
+            onPress={() => { navigation.navigate('Pagamento', { bicycle }) }}
+          >
+            <Text style={styles.btnText}>Alugar</Text>
+          </TouchableOpacity>
+        }
         <MapView style={{ height: 300, width: "100%" }}
           initialRegion={{
             latitude: bicycle.latitude,

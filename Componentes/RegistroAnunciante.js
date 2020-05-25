@@ -98,7 +98,6 @@ const RegistroAnunciante = ({ navigation }) => {
             placeholder="E-mail"
             placeholderTextColor="white"
             style={[styles.textInput]}
-            // secureTextEntry={true}
             selectionColor="white"
             onChangeText={text => {
                 setEmail(text);
@@ -109,6 +108,8 @@ const RegistroAnunciante = ({ navigation }) => {
             <TextInput
             placeholder="Senha"
             placeholderTextColor="white"
+            textContentType="password"
+            secureTextEntry={true}
             style={[styles.textInput]}
             selectionColor="white"
             onChangeText={text => {
@@ -120,6 +121,8 @@ const RegistroAnunciante = ({ navigation }) => {
             <TextInput
             placeholder="Confirmar senha"
             placeholderTextColor="white"
+            textContentType="password"
+            secureTextEntry={true}
             style={[styles.textInput]}
             selectionColor="white"
             onChangeText={text => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Button,
   Text,
@@ -16,6 +16,9 @@ import colors from "../colors";
 import Constants from "expo-constants";
 
 const TelaInicio = ({ navigation }) => {
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+
   return (
     <View style={styles.container}>
       <ScrollView>
@@ -40,10 +43,10 @@ const TelaInicio = ({ navigation }) => {
               placeholder="Senha"
               placeholderTextColor="white"
               style={[styles.textInput]}
-              // secureTextEntry={true}
+              secureTextEntry={true}
               selectionColor="white"
               onChangeText={text => {
-                setPassword(text);
+                setSenha(text);
               }}
             />
           </View>

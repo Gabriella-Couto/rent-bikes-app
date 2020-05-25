@@ -90,6 +90,8 @@ const RegistroCliente = ({ navigation }) => {
           <TextInput
             placeholder="Senha"
             placeholderTextColor="white"
+            textContentType="password"
+            secureTextEntry={true}
             style={[styles.textInput]}
             selectionColor="white"
             onChangeText={text => {
@@ -101,6 +103,8 @@ const RegistroCliente = ({ navigation }) => {
           <TextInput
             placeholder="Confirmar senha"
             placeholderTextColor="white"
+            textContentType="password"
+            secureTextEntry={true}
             style={[styles.textInput]}
             selectionColor="white"
             onChangeText={text => {

@@ -44,11 +44,10 @@ const CadastrarBike = ({ navigation }) => {
             const resetAction = StackActions.reset({
                 index: 0,
                 actions: [
-                    NavigationActions.navigate({ routeName: 'VerBicicleta' }),
+                    NavigationActions.navigate({ routeName: 'VerBicicleta', params: {bicycle: bike, anunciante: true} }),
                 ],
             });
             navigation.dispatch(resetAction);
-            console.log("sucesso");
         } catch (_err) {
             console.log("Erro dispatch", _err);
         }
@@ -63,7 +62,7 @@ const CadastrarBike = ({ navigation }) => {
                             placeholder="Título do anúncio"
                             placeholderTextColor="black"
                             style={[styles.textInput]}
-                            selectionColor="white"
+                            selectionColor="black"
                             onChangeText={text => {
                                 setTitulo(text);
                             }}
@@ -74,7 +73,7 @@ const CadastrarBike = ({ navigation }) => {
                             placeholder="Descrição da bicicleta"
                             placeholderTextColor="black"
                             style={[styles.textInput]}
-                            selectionColor="white"
+                            selectionColor="black"
                             onChangeText={text => {
                                 setDescricao(text);
                             }} />
@@ -84,7 +83,7 @@ const CadastrarBike = ({ navigation }) => {
                             placeholder="Preço por hora"
                             placeholderTextColor="black"
                             style={[styles.textInput]}
-                            selectionColor="white"
+                            selectionColor="black"
                             onChangeText={text => {
                                 setPreco(text);
                             }} />
@@ -94,7 +93,7 @@ const CadastrarBike = ({ navigation }) => {
                             placeholder="Latitude da bicicleta"
                             placeholderTextColor="black"
                             style={[styles.textInput]}
-                            selectionColor="white"
+                            selectionColor="black"
                             onChangeText={text => {
                                 setLatitude(text);
                             }} />
@@ -104,7 +103,7 @@ const CadastrarBike = ({ navigation }) => {
                             placeholder="Longitude da bicicleta"
                             placeholderTextColor="black"
                             style={[styles.textInput]}
-                            selectionColor="white"
+                            selectionColor="black"
                             onChangeText={text => {
                                 setLongitude(text);
                             }} />
@@ -114,7 +113,7 @@ const CadastrarBike = ({ navigation }) => {
                             placeholder="Url da imagem da bicicleta"
                             placeholderTextColor="black"
                             style={[styles.textInput]}
-                            selectionColor="white"
+                            selectionColor="black"
                             onChangeText={text => {
                                 setImagem(text);
                             }} />

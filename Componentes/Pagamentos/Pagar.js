@@ -48,7 +48,7 @@ const Pagar = ({ navigation }) => {
       <TouchableOpacity
         style={styles.btn}
         mode="contained"
-        onPress={() => { navigation.navigate('AlterarPagamento') }}
+        onPress={() => { navigation.navigate('AlterarPagamento', {user: user, bicycle: bicycle}) }}
       >
         <Text style={styles.btnText}>Alterar cartão</Text>
       </TouchableOpacity>

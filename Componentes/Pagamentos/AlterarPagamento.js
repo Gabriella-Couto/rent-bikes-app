@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { withNavigation } from 'react-navigation';
 import {
   Keyboard,
   Text,
@@ -10,15 +11,50 @@ import {
   ScrollView,
   Button
 } from 'react-native';
-import { withNavigation } from 'react-navigation';
 import colors from "../../colors";
 import Constants from "expo-constants";
+import { StackActions, NavigationActions } from 'react-navigation';
+import api from '../../api';
 
 const AlterarPagamento = ({ navigation }) => {
-    const [numero, setNumero] = useState('');
-    const [cvv, setCvv] = useState('');
-    const [expiracao, setExpiracao] = useState('');
-    const [nome, setNome] = useState('');
+    const { params } = navigation.state;
+    const usuarioLogado = params.user;
+    const bicycle = params.bicycle;
+    const [numero, setNumero] = useState(usuarioLogado.credit_card_number.toString());
+    const [cvv, setCvv] = useState(usuarioLogado.credit_card_cvv.toString());
+    const [expiracao, setExpiracao] = useState(usuarioLogado.credit_card_expiration_date);
+    const [nome, setNome] = useState(usuarioLogado.name);
+
+    const alterar = () => {
+      const user = {
+        "user": {
+          "name": usuarioLogado.name,
+          "email": usuarioLogado.email,
+          "password": usuarioLogado.password,
+          "password_confirmation": usuarioLogado.password_confirmation,
+          "document": usuarioLogado.document,
+          "phone": usuarioLogado.phone,
+          "credit_card_number": numero,
+          "credit_card_name": nome,
+          "credit_card_cvv": cvv,
+          "credit_card_expiration_date": expiracao
+        }
+      }
+
+      try {
+        const response = api.put(`/users/1`, user);
+
+        const resetAction = StackActions.reset({
+          index: 0,
+          actions: [
+            NavigationActions.navigate({ routeName: 'Pagamento', params: {user: user, bicycle: bicycle} }),
+          ],
+        });
+        navigation.dispatch(resetAction);
+      } catch (_err) {
+        console.log("Erro dispatch", _err);
+      }
+    }
 
     return (
     <ScrollView>
@@ -66,7 +102,7 @@ const AlterarPagamento = ({ navigation }) => {
                     </View>
                     <View style={styles.hr}>
                         <TextInput
-                        placeholder="Nome no cartão"
+                        placeholder="Titular do cartão"
                         placeholderTextColor="white"
                         style={[styles.textInput]}
                         selectionColor="white"
@@ -80,7 +116,7 @@ const AlterarPagamento = ({ navigation }) => {
                 <TouchableOpacity
                     style={styles.btn}
                     mode="contained"
-                    onPress={() => { navigation.navigate('Pagamento'); }}
+                    onPress={() => alterar()}
                     >
                     <Text style={styles.btnText}>Salvar</Text>
                 </TouchableOpacity>
@@ -155,4 +191,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default withNavigation(AlterarPagamento)
+export default withNavigation(AlterarPagamento);
