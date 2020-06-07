@@ -25,7 +25,8 @@ const TelaInicio = ({ navigation }) => {
         <View style={styles.container}>
 
           <Image style={styles.imagem} source={require('../Imagens/logo.png')} />
-          <Text style={{ ...styles.welcome }}>Bem Vindxs!</Text>
+          <Text style={{ ...styles.welcome }}>Aluga aí</Text>
+          <Text style={{ ...styles.welcome2 }}>Bem Vindxs!</Text>
           <View style={styles.hr}>
             <TextInput
               placeholder="email@aluga-ai.com"
@@ -88,6 +89,13 @@ const styles = StyleSheet.create({
   welcome: {
     color: "white",
     fontSize: 40,
+    marginTop: 30,
+    fontFamily: "Courier",
+    fontWeight: "bold"
+  },
+  welcome2: {
+    color: "white",
+    fontSize: 30,
     marginTop: 30,
     fontFamily: "Courier",
     fontWeight: "bold"

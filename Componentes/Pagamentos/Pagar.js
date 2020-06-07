@@ -48,14 +48,17 @@ const Pagar = ({ navigation }) => {
       <TouchableOpacity
         style={styles.btn}
         mode="contained"
-        onPress={() => { navigation.navigate('AlterarPagamento', {user: user, bicycle: bicycle}) }}
+        onPress={() => { navigation.navigate('AlterarPagamento', { user: user, bicycle: bicycle }) }}
       >
         <Text style={styles.btnText}>Alterar cartão</Text>
       </TouchableOpacity>
       <View style={styles.dividerLine} ></View>
       <View style={styles.alignCenter}>
-        <Text style={styles.infos}>Valor do aluguel: {bicycle.price}</Text>
-        <Text style={styles.infos}>Bicicleta: {bicycle.title}</Text>
+        <Text style={styles.infos}>Taxa de serviço: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(5)}</Text>
+        <Text style={styles.infos}>Bicicleta: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
+        <View style={styles.dividerLine2} ></View>
+
+        <Text style={styles.infos}>Valor total do aluguel: {Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price + 5)}</Text>
       </View>
       <TouchableOpacity
         style={styles.btn}
@@ -108,6 +111,13 @@ const styles = StyleSheet.create({
   dividerLine: {
     paddingBottom: 2,
     backgroundColor: colors.venus400,
+    marginVertical: 15,
+    width: 330,
+    marginTop: 30
+  },
+  dividerLine2: {
+    paddingBottom: 2,
+    backgroundColor: colors.lightGrey,
     marginVertical: 15,
     width: 330,
     marginTop: 30

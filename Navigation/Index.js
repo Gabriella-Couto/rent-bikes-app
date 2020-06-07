@@ -9,7 +9,7 @@ import Registro from '../Componentes/Registro';
 import RegistroCliente from '../Componentes/RegistroCliente';
 import RegistroAnunciante from '../Componentes/RegistroAnunciante';
 import AlterarPagamento from '../Componentes/Pagamentos/AlterarPagamento';
-import CadastrarBike from '../Componentes/CadastarBike';
+import CadastrarBike from '../Componentes/CadastrarBike';
 import ListMap from '../Componentes/ListMap';
 
 const Index = createStackNavigator({

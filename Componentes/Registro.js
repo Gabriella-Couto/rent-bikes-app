@@ -16,17 +16,17 @@ import Constants from "expo-constants";
 import { CheckBox } from 'react-native-elements';
 
 const Registro = ({ navigation }) => {
-  
+
   return (
     <View style={styles.container}>
-      <Text style={styles.textPagamento}>Você pretende?</Text>
+      <Text style={styles.textPagamento}>Como você pretende se cadastrar?</Text>
       <View style={styles.btnPessoa}>
         <TouchableOpacity
-            style={styles.btn}
-            mode="contained"
-            onPress={() => { navigation.navigate('RegistroCliente'); }}
-          >
-            <Text style={styles.btnText}>Alugar</Text>
+          style={styles.btn}
+          mode="contained"
+          onPress={() => { navigation.navigate('RegistroCliente'); }}
+        >
+          <Text style={styles.btnText}>Alugar</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.btn}
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     width: 125,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-around'
+    margin: 10
   },
   btnText: {
     fontSize: 20,

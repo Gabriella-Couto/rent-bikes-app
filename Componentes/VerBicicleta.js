@@ -8,21 +8,21 @@ const VerBicicleta = ({ route, navigation }) => {
   const { params } = navigation.state;
   const bicycle = params.bicycle;
   const anunciante = params.anunciante;
+  console.log(bicycle);
 
   return (
     <View style={styles.container}>
       <ScrollView>
-        <View>
+        <View style={styles.container2}>
           <Image style={styles.productImg} source={{ uri: bicycle.image_url }} />
           <Text style={styles.title} >{bicycle.title}</Text>
           <Text style={styles.price}>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(bicycle.price)}</Text>
           <Text style={styles.description} >{bicycle.description}</Text>
         </View>
-
         <View style={styles.separator}></View>
-        {anunciante != null ? 
-          null 
-          : 
+        {anunciante != null ?
+          null
+          :
           <TouchableOpacity
             style={styles.btn}
             mode="contained"
@@ -35,8 +35,8 @@ const VerBicicleta = ({ route, navigation }) => {
           initialRegion={{
             latitude: bicycle.latitude,
             longitude: bicycle.longitude,
-            latitudeDelta: 0.0083,
-            longitudeDelta: 0.0084
+            latitudeDelta: 0.0033,
+            longitudeDelta: 0.0034
           }}
         >
           <MapView.Marker
@@ -47,7 +47,6 @@ const VerBicicleta = ({ route, navigation }) => {
             }}
           />
         </MapView>
-
       </ScrollView>
     </View>
 
@@ -63,6 +62,9 @@ const styles = StyleSheet.create({
     margin: 15,
     height: 200,
     borderRadius: 10,
+  },
+  container2: {
+    alignItems: 'center',
   },
   productImg: {
     width: 230,
