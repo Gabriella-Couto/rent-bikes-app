@@ -10,7 +10,7 @@
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.10",
     "@types/react-map-gl": "^5.2.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "expo": "~37.0.3",
     "expo-updates": "~0.1.0",
     "intl": "^1.2.5",
